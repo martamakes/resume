@@ -8,7 +8,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{charter}
-\usepackage[a4paper,margin=1.4cm,top=1.1cm,bottom=1.0cm]{geometry}
+\usepackage[a4paper,margin=1.3cm,top=0.9cm,bottom=0.8cm]{geometry}
 \usepackage{xcolor}
 \usepackage{enumitem}
 \usepackage{titlesec}
@@ -26,7 +26,7 @@
 \titlespacing*{\section}{0pt}{0.7em}{0.4em}
 
 % Tight bullets
-\setlist[itemize]{leftmargin=1.1em,itemsep=1pt,topsep=1pt,parsep=0pt,label=\textcolor{accent}{\small$\bullet$}}
+\setlist[itemize]{leftmargin=1.1em,itemsep=0.5pt,topsep=1pt,parsep=0pt,label=\textcolor{accent}{\small$\bullet$}}
 
 % \job{Title}{Company}{Dates}{Location}
 \newcommand{\job}[4]{%
@@ -51,20 +51,19 @@
 
 % ---------------- SUMMARY ----------------
 \section{Profile}
-Backend-focused engineer who designs, ships and operates a production SaaS used by 150+ artists:
-APIs, PostgreSQL data models, Stripe payment flows and LLM integrations. Building solid
-fundamentals in C, C++ and Unix systems at 42 Madrid. I bring 20+ years of working with clients
-and teams, so I understand why a feature exists before I write it, and I design for data integrity
-and day-to-day operation, not only the happy path.
+Backend-focused engineer who builds and operates a production SaaS used by 150+ artists: APIs, PostgreSQL,
+payment and royalty data flows, security and LLM integrations, all covered by automated tests in CI.
+Building C/C++ and Unix fundamentals at 42 Madrid, with 20+ years of client and team experience behind me.
 
 % ---------------- SKILLS ----------------
 \section{Technical Skills}
 \begin{tabularx}{\linewidth}{@{}p{3.3cm}X@{}}
 \textbf{Languages}   & C, C++, Python, TypeScript/JavaScript, SQL, Bash \\
-\textbf{Backend}     & REST APIs, Node.js, Next.js (API routes), Prisma ORM, Odoo (Python) \\
-\textbf{Data}        & PostgreSQL (Neon), Redis; relational modeling, migrations, transactional integrity \\
+\textbf{Backend}     & REST APIs, Node.js, Next.js (API routes), Prisma ORM, webhooks, Odoo (Python) \\
+\textbf{Security}    & Field-level encryption, HMAC, MFA \& step-up auth, audit logging, GCP Secret Manager \\
+\textbf{Data}        & PostgreSQL (Neon), Redis; relational modeling, migrations, idempotent imports, reconciliation \\
 \textbf{AI / LLMs}   & Claude API integrated in production; AI coding assistants for exploration, tests and review \\
-\textbf{Tooling}     & Git \& GitHub, GitHub Actions (CI/CD), Docker \& Docker Compose, Linux/Unix, OWASP ZAP \\
+\textbf{Testing \& Ops} & Vitest, Git \& GitHub, GitHub Actions (CI/CD), Docker \& Docker Compose, Linux/Unix, OWASP ZAP \\
 \textbf{Languages (spoken)} & Spanish (native), English (C2, Cambridge Proficiency); four years working between Spain and the USA \\
 \end{tabularx}
 
@@ -74,24 +73,22 @@ and day-to-day operation, not only the happy path.
 \job{Founder \& Full-stack Engineer (backend lead)}{Distrify.me}{2022 -- Present}{Madrid}
 {\small\color{muted} Music distribution \& marketing SaaS for independent artists in Spain and Latin America. Sole engineer.}
 \begin{itemize}
-  \item Designed and built the backend services and APIs behind a platform where \textbf{150+ artists} distribute releases and receive payments; \textbf{3 years in production}.
-  \item Implemented payments and a credit system on \textbf{Stripe} with \textbf{idempotent webhook handlers}, retry logic and an audit trail, so duplicated or out-of-order events never corrupt balances.
-  \item Modeled the relational schema in \textbf{PostgreSQL with Prisma} (migrations, relations, constraints) and used \textbf{Redis} for caching.
-  \item Integrated the \textbf{Claude API} into backend workflows that generate marketing assets for artists.
-  \item Set up \textbf{CI/CD with GitHub Actions}, including automated \textbf{OWASP ZAP} security scans on deployment.
-  %% TODO: if Distrify has automated tests, add a bullet here, e.g.
-  %% \item Wrote unit and integration tests (Jest/Vitest) for payment and billing logic, run in CI.
+  \item Designed and built the backend (Next.js API routes, \textbf{PostgreSQL + Prisma}) of a platform where \textbf{150+ artists} distribute releases and get paid; \textbf{3 years in production}.
+  \item Built the \textbf{royalties pipeline}: parses distributor CSV reports, splits revenue across multiple beneficiaries with exact decimal arithmetic and reconciles totals. Imports are \textbf{idempotent} and writes run through a dry-run plan and a commit gate.
+  \item Protected financial data (bank accounts) with \textbf{field-level encryption}, HMAC-based lookups and keys in \textbf{GCP Secret Manager}; a Prisma write guard and CI checks block unencrypted writes.
+  \item Secured admin access with \textbf{MFA}, step-up authentication, rate limiting, break-glass approval flows and a full \textbf{audit log}.
+  \item Integrated third-party services through \textbf{signed webhooks} (Stripe, Didit identity verification) and the \textbf{Claude API} for AI marketing workflows.
+  \item Wrote \textbf{82 Vitest test files} (unit, integration and regression) run on every push in \textbf{GitHub Actions}, alongside OWASP ZAP security scans.
 \end{itemize}
 
 \job{Freelance Backend Developer}{Business systems \& automation}{2022 -- Present}{Remote}  %% TODO: confirm dates
 \begin{itemize}
-  \item Built custom \textbf{Odoo modules in Python} for invoicing, treasury, accounting and tax processes, including e-invoicing integrations for Spain's \textbf{Verifactu} regulation.
-  \item Automated data flows between CRM, email, campaigns and reporting with \textbf{n8n} and REST APIs.
+  \item Built custom \textbf{Odoo modules in Python} (invoicing, treasury, accounting, Spain's \textbf{Verifactu} e-invoicing) and \textbf{n8n} automations over REST APIs.
 \end{itemize}
 
 \job{Technology \& Digital Business Trainer}{Grouplance Formaci\'on}{2021 -- Present}{Madrid}
 \begin{itemize}
-  \item Design and teach courses in programming, digital marketing and business for adult learners; I explain technical concepts to non-technical audiences every week.
+  \item Design and teach programming, digital marketing and business courses; explaining technical concepts to non-technical audiences.
 \end{itemize}
 
 \job{Founder}{SaludShopping.com}{2012 -- 2021}{Madrid}
@@ -101,24 +98,22 @@ and day-to-day operation, not only the happy path.
 
 \par\vspace{4pt}\textbf{Earlier career} \hfill {\color{muted}1997 -- 2011 \textperiodcentered\ Spain \& USA}\par
 \begin{itemize}
-  \item TV production and branded content (Mediapro, Boomerang TV, Zeppelin TV), music publishing (BMG), concert promotion and US tours; operations and public-tender administration. Two decades of client, vendor and team coordination.
+  \item TV production and branded content (Mediapro, Boomerang TV, Zeppelin TV), music publishing (BMG), concert promotion, US tours and public-tender administration.
 \end{itemize}
 
 % ---------------- EDUCATION ----------------
 \section{Education \& Training}
 
 \job{42 Madrid}{Software engineering, Common Core}{In progress}{Madrid}
-{\small\color{muted} Project-based, peer-to-peer program: no teachers; every project is code-reviewed and defended in front of peers.}
 \begin{itemize}
   \proj{ft\_irc (C++)}{IRC server handling multiple clients over TCP with non-blocking, event-driven I/O.}
   \proj{Minishell (C)}{Bash-like shell: process creation, pipes, redirections, file descriptors and signals.}
   \proj{Philosophers (C)}{Concurrency with threads and mutexes; preventing deadlocks and data races.}
-  \proj{CPP Modules (C++)}{OOP, STL containers, templates, memory management, canonical form.}
-  \proj{Inception}{Multi-service infrastructure with Docker Compose: NGINX, WordPress, MariaDB.}
+  \proj{CPP Modules (C++)}{OOP, STL, templates, memory management} \textperiodcentered\ \textbf{Inception}: Docker Compose, NGINX, MariaDB.
   %% TODO: add your validated algorithms project (e.g. push_swap: sorting with two stacks, complexity analysis).
-  \item \textbf{Code review}: regular peer evaluations, reviewing other students' code and defending my own.
+  \item \textbf{Code review}: peer-to-peer program with no teachers; I review other students' code and defend my own in every project.
 \end{itemize}
 
-\par\vspace{4pt}\textbf{Master's in Audiovisual Production} \textperiodcentered\ Audiovisual Communication \& Multimedia studies, Universidad Francisco de Vitoria  %% TODO: confirm degree wording
+\par\vspace{4pt}\textbf{Master's in Audiovisual Production} \textperiodcentered\ Audiovisual Communication \& Multimedia studies (UFV Madrid)  %% TODO: confirm degree wording
 
 \end{document}
