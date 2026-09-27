@@ -1,0 +1,124 @@
+% ============================================================
+%  Marta Vigara - Resume for: Backend Software Engineer (Aurora Systems)
+%  42 ft_resume. Compile with: pdflatex resume.tex
+%  Lines marked %% TODO need your confirmation before the evaluation.
+% ============================================================
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+\usepackage[a4paper,margin=1.4cm,top=1.1cm,bottom=1.0cm]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{accent}{HTML}{1F4E79}
+\definecolor{muted}{HTML}{555555}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+% Section style
+\titleformat{\section}{\large\bfseries\color{accent}\scshape}{}{0em}{}[\vspace{-0.6em}\color{accent}\rule{\linewidth}{0.6pt}]
+\titlespacing*{\section}{0pt}{0.7em}{0.4em}
+
+% Tight bullets
+\setlist[itemize]{leftmargin=1.1em,itemsep=1pt,topsep=1pt,parsep=0pt,label=\textcolor{accent}{\small$\bullet$}}
+
+% \job{Title}{Company}{Dates}{Location}
+\newcommand{\job}[4]{%
+  \par\vspace{4pt}\textbf{#1} \textperiodcentered\ #2 \hfill {\color{muted}#3 \textperiodcentered\ #4}\par}
+
+% \proj{Name}{Description}
+\newcommand{\proj}[2]{\item \textbf{#1}: #2}
+
+\begin{document}
+
+% ---------------- HEADER ----------------
+\begin{center}
+  {\fontsize{20}{22}\selectfont\bfseries Marta Vigara}\\[0.15em]
+  {\large\color{accent} Backend Software Engineer}\\[0.25em]
+  {\small
+  Madrid, Spain \textperiodcentered\
+  \href{mailto:marta.vigara.gonzalez@gmail.com}{marta.vigara.gonzalez@gmail.com} \textperiodcentered\
+  \href{https://linkedin.com/in/martavigara}{linkedin.com/in/martavigara} \textperiodcentered\
+  \href{https://github.com/martamakes}{github.com/martamakes} \textperiodcentered\
+  \href{https://distrify.me}{distrify.me}}
+\end{center}
+
+% ---------------- SUMMARY ----------------
+\section{Profile}
+Backend-focused engineer who designs, ships and operates a production SaaS used by 150+ artists:
+APIs, PostgreSQL data models, Stripe payment flows and LLM integrations. Building solid
+fundamentals in C, C++ and Unix systems at 42 Madrid. I bring 20+ years of working with clients
+and teams, so I understand why a feature exists before I write it, and I design for data integrity
+and day-to-day operation, not only the happy path.
+
+% ---------------- SKILLS ----------------
+\section{Technical Skills}
+\begin{tabularx}{\linewidth}{@{}p{3.3cm}X@{}}
+\textbf{Languages}   & C, C++, Python, TypeScript/JavaScript, SQL, Bash \\
+\textbf{Backend}     & REST APIs, Node.js, Next.js (API routes), Prisma ORM, Odoo (Python) \\
+\textbf{Data}        & PostgreSQL (Neon), Redis; relational modeling, migrations, transactional integrity \\
+\textbf{AI / LLMs}   & Claude API integrated in production; AI coding assistants for exploration, tests and review \\
+\textbf{Tooling}     & Git \& GitHub, GitHub Actions (CI/CD), Docker \& Docker Compose, Linux/Unix, OWASP ZAP \\
+\textbf{Languages (spoken)} & Spanish (native), English (C2, Cambridge Proficiency); four years working between Spain and the USA \\
+\end{tabularx}
+
+% ---------------- EXPERIENCE ----------------
+\section{Experience}
+
+\job{Founder \& Full-stack Engineer (backend lead)}{Distrify.me}{2022 -- Present}{Madrid}
+{\small\color{muted} Music distribution \& marketing SaaS for independent artists in Spain and Latin America. Sole engineer.}
+\begin{itemize}
+  \item Designed and built the backend services and APIs behind a platform where \textbf{150+ artists} distribute releases and receive payments; \textbf{3 years in production}.
+  \item Implemented payments and a credit system on \textbf{Stripe} with \textbf{idempotent webhook handlers}, retry logic and an audit trail, so duplicated or out-of-order events never corrupt balances.
+  \item Modeled the relational schema in \textbf{PostgreSQL with Prisma} (migrations, relations, constraints) and used \textbf{Redis} for caching.
+  \item Integrated the \textbf{Claude API} into backend workflows that generate marketing assets for artists.
+  \item Set up \textbf{CI/CD with GitHub Actions}, including automated \textbf{OWASP ZAP} security scans on deployment.
+  %% TODO: if Distrify has automated tests, add a bullet here, e.g.
+  %% \item Wrote unit and integration tests (Jest/Vitest) for payment and billing logic, run in CI.
+\end{itemize}
+
+\job{Freelance Backend Developer}{Business systems \& automation}{2022 -- Present}{Remote}  %% TODO: confirm dates
+\begin{itemize}
+  \item Built custom \textbf{Odoo modules in Python} for invoicing, treasury, accounting and tax processes, including e-invoicing integrations for Spain's \textbf{Verifactu} regulation.
+  \item Automated data flows between CRM, email, campaigns and reporting with \textbf{n8n} and REST APIs.
+\end{itemize}
+
+\job{Technology \& Digital Business Trainer}{Grouplance Formaci\'on}{2021 -- Present}{Madrid}
+\begin{itemize}
+  \item Design and teach courses in programming, digital marketing and business for adult learners; I explain technical concepts to non-technical audiences every week.
+\end{itemize}
+
+\job{Founder}{SaludShopping.com}{2012 -- 2021}{Madrid}
+\begin{itemize}
+  \item Built and operated, on my own, a PrestaShop e-commerce store for respiratory therapy equipment, selling B2C and to public healthcare providers. Company sold.
+\end{itemize}
+
+\par\vspace{4pt}\textbf{Earlier career} \hfill {\color{muted}1997 -- 2011 \textperiodcentered\ Spain \& USA}\par
+\begin{itemize}
+  \item TV production and branded content (Mediapro, Boomerang TV, Zeppelin TV), music publishing (BMG), concert promotion and US tours; operations and public-tender administration. Two decades of client, vendor and team coordination.
+\end{itemize}
+
+% ---------------- EDUCATION ----------------
+\section{Education \& Training}
+
+\job{42 Madrid}{Software engineering, Common Core}{In progress}{Madrid}
+{\small\color{muted} Project-based, peer-to-peer program: no teachers; every project is code-reviewed and defended in front of peers.}
+\begin{itemize}
+  \proj{ft\_irc (C++)}{IRC server handling multiple clients over TCP with non-blocking, event-driven I/O.}
+  \proj{Minishell (C)}{Bash-like shell: process creation, pipes, redirections, file descriptors and signals.}
+  \proj{Philosophers (C)}{Concurrency with threads and mutexes; preventing deadlocks and data races.}
+  \proj{CPP Modules (C++)}{OOP, STL containers, templates, memory management, canonical form.}
+  \proj{Inception}{Multi-service infrastructure with Docker Compose: NGINX, WordPress, MariaDB.}
+  %% TODO: add your validated algorithms project (e.g. push_swap: sorting with two stacks, complexity analysis).
+  \item \textbf{Code review}: regular peer evaluations, reviewing other students' code and defending my own.
+\end{itemize}
+
+\par\vspace{4pt}\textbf{Master's in Audiovisual Production} \textperiodcentered\ Audiovisual Communication \& Multimedia studies, Universidad Francisco de Vitoria  %% TODO: confirm degree wording
+
+\end{document}
